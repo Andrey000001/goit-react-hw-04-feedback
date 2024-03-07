@@ -1,3 +1,4 @@
+
 import { Button } from './FeedbackOptions.styled';
 export const FeedbackOptions = ({ option, handleClick }) => {
   return (
