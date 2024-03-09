@@ -32,7 +32,6 @@ export default function App() {
     const positiveFeedback = (good / total) * 100 || 0;
     return positiveFeedback.toFixed(0);
   };
-
   return (
     <Container>
       <SectionTitle title="Please leave feedback">
@@ -41,16 +40,20 @@ export default function App() {
           handleClick={handleClick}
         />
       </SectionTitle>
-      <SectionTitle title="Statistics">
+
+      {totalFeedback() === 0 ? (
         <Notification message="There is no feedback" />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={totalFeedback()}
-          positivePercentage={countPositiveFeedbackPercentage()}
-        />
-      </SectionTitle>
+      ) : (
+        <SectionTitle title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={totalFeedback()}
+            positivePercentage={countPositiveFeedbackPercentage()}
+          />
+        </SectionTitle>
+      )}
     </Container>
   );
 }
